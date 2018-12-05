@@ -6,8 +6,18 @@
     <h1 th:text="${title}">Default Title</h1>
 
     <form method="post">
-        <input type="text" name="cheeseName" />
-        <input type="submit" value="Add Cheese" />
+        <table>
+           <tr>
+               <td><input type="text" name="cheeseName" /></td>
+           </tr>
+           <tr>
+               <td><textarea type="text" name="cheeseDescription"></textarea></td>
+           </tr>
+           <tr>
+                <td><input type="submit" value="Add Cheese" /></td>
+           </tr>
+
+        </table>
     </form>
 
 </body>

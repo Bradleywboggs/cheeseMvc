@@ -6,9 +6,16 @@
     <h1 th:text="${title}">Default Title</h1>
 
     <p th:unless="${cheeses} and ${cheeses.size()} ">No cheeses</p>
-    <ul>
-        <li th:each="cheese: ${cheeses}" th:text="${cheese}"></li>
-    </ul>
+    <table>
+        <tr>
+            <th align="left">Cheese</th>
+            <th align="left">Description</th>
+        </tr>
+        <tr th:each="cheese: ${cheeses}" >
+            <td th:text="${cheese.key}">Cheese</td>
+            <td th:text="${cheese.value}">Description</td>
+        </tr>
+    </table>
 
 </body>
 </html>
