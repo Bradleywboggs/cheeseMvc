@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String,String> cheeses = new HashMap<>();
+    static HashMap<String, String> cheeses = new HashMap<>();
+
     // Request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -25,7 +27,7 @@ public class CheeseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String displayAddCheeseForm(Model model) {
-        model.addAttribute("title","Add Cheese" );
+        model.addAttribute("title", "Add Cheese");
         return "cheese/add";
     }
 
@@ -36,6 +38,22 @@ public class CheeseController {
         // Redirect to /cheese
         return "redirect:";
 
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
+    public String displayRemoveCheeseForm(Model model) {
+        model.addAttribute("cheeses", cheeses);
+        model.addAttribute("title", "Remove Cheese");
+        return "/cheese/remove";
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public String processRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
+        for (String cheese : cheeseList) {
+            cheeses.remove(cheese);
+        }
+
+        return "redirect:";
     }
 }
 
