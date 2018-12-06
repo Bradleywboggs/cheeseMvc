@@ -7,12 +7,15 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
 </head>
-<body>
 
-<nav th:fragment="navigation">
-    <a href="/cheese">List</a>
-    <a href="/cheese/add">Add</a>
-</nav>
+<body>
+    <header>
+      <nav th:fragment="navigation">
+         <a href="/cheese">List</a>
+         <a href="/cheese/add">Add</a>
+         <a href="/cheese/remove">Remove</a>
+      </nav>
+    </header>
 
 </body>
 </html>
