@@ -6,13 +6,15 @@
     <main>
         <h1 th:text="${title}">Default Title</h1>
 
-         <p th:unless="${cheeses} and ${cheeses.size()} ">No cheeses</p>
+
+        <p th:unless="${cheeses} and ${cheeses.size()} ">No cheeses</p>
+
         <table>
-            <tr th:if="${cheeses} and ${cheeses.size()}" >
+            <tr th:if="${cheeses} and ${cheeses.size()}"  >
                 <th align="left">Cheese</th>
                 <th align="left">Description</th>
             </tr>
-            <tr th:each="cheese: ${cheeses}" >
+            <tr th:each="cheese : ${cheeses}">
                 <td th:text="${cheese.key}">Cheese</td>
                 <td th:text="${cheese.value}">Description</td>
              </tr>
