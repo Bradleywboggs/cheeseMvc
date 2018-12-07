@@ -9,7 +9,7 @@
         <table>
            <tr>
                <td><label>Enter cheese name</label></td>
-               <td><input type="text" name="cheeseName" /></td>
+               <td><input type="text" name="cheeseName" /><span th:if="${nameError}" th:text="${nameError}" class="error"></span></td>
            </tr>
            <tr>
                <td><label>Enter a description</label></td>
