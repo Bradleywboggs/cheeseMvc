@@ -4,13 +4,16 @@
 <body>
     <nav th:replace="fragments :: navigation"></nav>
     <h1 th:text="${title}">Default Title</h1>
+    <p th:unless="${cheeses} and ${cheeses.size()} ">No cheeses yet!<a href="/cheese/add">Add cheese</a></p>
     <form method="post">
+        <th:block th:if="${cheeses} and ${cheeses.size()}">
         <table th:each="cheese : ${cheeses}">
          <tr>
              <td><input type="checkbox" name="cheeseList" th:value="${cheese.key}" th:text="${cheese.key}"/></td>
          </tr>
         </table><br/>
         <input type="submit" value="Delete Cheese!"/>
+        </th:block>
     </form>
 </body>
 </html>

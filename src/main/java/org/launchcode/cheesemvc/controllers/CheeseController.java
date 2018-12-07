@@ -69,11 +69,16 @@ public class CheeseController {
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
     public String processRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
-        for (String cheese : cheeseList) {
-            cheeses.remove(cheese);
+        if (cheeseList == null) {
+            return "/cheese/remove";
+        } else {
+            for (String cheese : cheeseList) {
+                cheeses.remove(cheese);
+
+            }return "redirect:";
         }
 
-        return "redirect:";
+
     }
 }
 
