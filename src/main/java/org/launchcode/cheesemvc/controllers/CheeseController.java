@@ -6,15 +6,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
     static HashMap<String, String> cheeses = new HashMap<>();
+    static String nameErrorMessage;
+
+    private static boolean isLettersSpaces(String someString) {
+        Pattern p = Pattern.compile("^[ A-Za-z]+$");
+        Matcher m = p.matcher(someString);
+        boolean b = m.matches();
+        return b;
+    }
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -32,12 +42,22 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDescription) {
-        cheeses.put(cheeseName, cheeseDescription);
+    public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDescription, Model model) {
 
-        // Redirect to /cheese
-        return "redirect:";
+        if (cheeseName.isEmpty() || isLettersSpaces(cheeseName) == false) {
+            nameErrorMessage = "This input is not valid";
+            model.addAttribute("nameError", nameErrorMessage);
+            model.addAttribute("cheeses", cheeses);
+            model.addAttribute("title", "My Cheeses");
+            return "cheese/add";
 
+        } else {
+            cheeses.put(cheeseName, cheeseDescription);
+
+            // Redirect to /cheese
+            return "redirect:";
+
+        }
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.GET)

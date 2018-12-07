@@ -7,7 +7,7 @@
     <form method="post">
         <table th:each="cheese : ${cheeses}">
          <tr>
-             <td><input type="checkbox" name="cheeseList" th:value="${cheese.key}" th:text="${cheese.key}"/> Cheese</td>
+             <td><input type="checkbox" name="cheeseList" th:value="${cheese.key}" th:text="${cheese.key}"/></td>
          </tr>
         </table><br/>
         <input type="submit" value="Delete Cheese!"/>
