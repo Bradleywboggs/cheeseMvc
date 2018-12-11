@@ -9,7 +9,7 @@
         <th:block th:if="${cheeses} and ${cheeses.size()}">
         <table th:each="cheese : ${cheeses}">
          <tr>
-             <td><input type="checkbox" name="cheeseList" th:value="${cheese.key}" th:text="${cheese.key}"/></td>
+             <td><input type="checkbox" name="cheeseList" th:value="${cheese.name}" th:text="${cheese.name}"/></td>
          </tr>
         </table><br/>
         <input type="submit" value="Delete Cheese!"/>
