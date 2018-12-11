@@ -1,5 +1,6 @@
 package org.launchcode.cheesemvc.controllers;
 
+import org.launchcode.cheesemvc.models.Cheese;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String, String> cheeses = new HashMap<>();
+    static ArrayList<Cheese> cheeses = new ArrayList<>();
     static String nameErrorMessage;
 
     private static boolean isLettersSpaces(String someString) {
@@ -52,7 +53,8 @@ public class CheeseController {
             return "cheese/add";
 
         } else {
-            cheeses.put(cheeseName, cheeseDescription);
+            Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+            cheeses.add(newCheese);
 
             // Redirect to /cheese
             return "redirect:";
@@ -68,17 +70,19 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public String processRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
+    public String processRemoveCheeseForm(@RequestParam ArrayList<Cheese> cheeseList) {
         if (cheeseList == null) {
             return "/cheese/remove";
-        } else {
-            for (String cheese : cheeseList) {
-                cheeses.remove(cheese);
 
-            }return "redirect:";
         }
-
+        for (Cheese cheese : cheeseList) {
+            for (int i = 0;i<cheeses.size();i++) {
+                if (cheeses.get(i).getName().equals(cheese.getName())) {
+                    cheeses.remove(cheeses.get(i));
+                }
+            }
+        }
+        return "redirect:";
 
     }
 }
-
