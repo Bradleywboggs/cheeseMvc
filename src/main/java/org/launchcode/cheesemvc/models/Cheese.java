@@ -4,26 +4,27 @@ import java.util.Objects;
 
 public class Cheese {
     private static int nextId = 1;
-    private int id;
+    private int cheeseId;
     private String name;
     private String description;
 
 
     public Cheese(String name) {
-        this.name = name;
+        this.cheeseId = nextId;
+        nextId++;
         this.description = "";
     }
 
     public Cheese(String name, String description) {
-        this.id = nextId;
+        this.cheeseId = nextId;
         nextId++;
         this.name = name;
         this.description = description;
     }
 
 
-    public int getId() {
-        return id;
+    public int getCheeseId() {
+        return cheeseId;
     }
 
     public String getName() {
@@ -43,18 +44,18 @@ public class Cheese {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cheese cheese = (Cheese) o;
-        return id == cheese.id;
+        return cheeseId == cheeseId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(cheeseId);
     }
 
     @Override
     public String toString() {
         return "Cheese{" +
-                "id=" + id +
+                "cheeseId=" + cheeseId +
                 ", name='" + name + '\'' +
                 '}';
     }
