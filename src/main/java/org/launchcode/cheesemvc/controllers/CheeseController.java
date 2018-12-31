@@ -4,6 +4,7 @@ import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.CheeseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,24 +36,12 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDescription, Model model) {
-
-        if (cheeseName.isEmpty() || isLettersSpaces(cheeseName) == false) {
-            nameErrorMessage = "This input is not valid";
-            model.addAttribute("nameError", nameErrorMessage);
-            model.addAttribute("cheeses", cheeses);
-            model.addAttribute("title", "My Cheeses");
-            return "cheese/add";
-
-        } else {
-
-            Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+    public String processAddCheeseForm(@ModelAttribute Cheese newCheese) {
             CheeseData.add(newCheese);
             // Redirect to /cheese
             return "redirect:";
 
         }
-    }
 
     @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String displayRemoveCheeseForm(Model model) {

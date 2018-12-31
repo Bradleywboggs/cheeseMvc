@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Cheese {
     private static int nextId = 1;
-    private int cheeseId;
+    private final int cheeseId;
     private String name;
     private String description;
 
@@ -12,6 +12,7 @@ public class Cheese {
     public Cheese(String name) {
         this.cheeseId = nextId;
         nextId++;
+        this.name = name;
         this.description = "";
     }
 
@@ -22,6 +23,13 @@ public class Cheese {
         this.description = description;
     }
 
+    public Cheese() {
+        this.cheeseId = nextId;
+        nextId++;
+        this.name = "";
+        this. description = "";
+    }
+
 
     public int getCheeseId() {
         return cheeseId;
@@ -29,6 +37,10 @@ public class Cheese {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
