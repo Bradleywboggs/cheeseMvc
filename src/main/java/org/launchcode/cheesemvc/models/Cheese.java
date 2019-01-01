@@ -3,32 +3,27 @@ package org.launchcode.cheesemvc.models;
 import java.util.Objects;
 
 public class Cheese {
-    private static int nextId = 1;
-    private final int cheeseId;
     private String name;
+
     private String description;
 
+    private static int nextId = 1;
+    private final int cheeseId;
 
-    public Cheese(String name) {
-        this.cheeseId = nextId;
-        nextId++;
-        this.name = name;
-        this.description = "";
-    }
 
-    public Cheese(String name, String description) {
-        this.cheeseId = nextId;
-        nextId++;
-        this.name = name;
-        this.description = description;
-    }
 
     public Cheese() {
         this.cheeseId = nextId;
         nextId++;
-        this.name = "";
-        this. description = "";
+
     }
+
+    public Cheese(String name, String description) {
+        this();
+        this.name = name;
+        this.description = description;
+    }
+
 
 
     public int getCheeseId() {
@@ -56,7 +51,7 @@ public class Cheese {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cheese cheese = (Cheese) o;
-        return cheeseId == cheeseId;
+        return this.cheeseId == cheese.cheeseId;
     }
 
     @Override
