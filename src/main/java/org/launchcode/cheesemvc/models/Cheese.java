@@ -1,8 +1,6 @@
 package org.launchcode.cheesemvc.models;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 public class Cheese {
@@ -17,6 +15,10 @@ public class Cheese {
     private String description;
 
     private CheeseType type;
+
+    @Max(5)
+    @Min(1)
+    private int rating;
 
     private static int nextId = 1;
     private final int cheeseId;
@@ -65,6 +67,14 @@ public class Cheese {
 
     public void setType(CheeseType type) {
         this.type = type;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     @Override
