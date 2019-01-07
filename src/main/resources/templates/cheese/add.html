@@ -8,15 +8,25 @@
     <form method="post" th:object="${cheese}">
         <table>
            <tr>
-               <td><label>Enter cheese name</label></td>
-               <td><input type="text" th:field="*{name}" /></td>
+               <td><label th:for="name">Enter cheese name</label></td>
+               <td><input th:field="*{name}" /></td>
                <td><span class="error" th:errors="*{name}"></span></td>
            </tr>
            <tr>
-               <td><label>Enter a description</label></td>
-               <td><input type="text" th:field="*{description}"/></td>
+               <td><label th:for="description">Enter a description</label></td>
+               <td><input th:field="*{description}"/></td>
                <td><span th:errors="*{description}" class="error"></span></td>
            </tr>
+            <tr>
+                <td><label th:for="type">Type</label></td>
+                <td><select th:field="*{type}">
+                        <option th:each="cheeseType : ${cheeseTypes}"
+                                th:text="${cheeseType.name}"
+                                th:value="${cheeseType}"></option>
+                    </select>
+                </td>
+
+            </tr>
            <tr>
                 <td><input type="submit" value="Add Cheese" /></td>
            </tr>
