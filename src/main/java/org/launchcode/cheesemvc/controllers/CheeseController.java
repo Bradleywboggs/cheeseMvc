@@ -34,6 +34,7 @@ public class CheeseController {
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("cheeseTypes",CheeseType.values());
             return "cheese/add";
         }
         CheeseData.add(newCheese);
@@ -66,6 +67,7 @@ public class CheeseController {
     @RequestMapping(value = "/cheese/edit/{cheeseId}", method = RequestMethod.GET)
     public String displayEditCheeseForm(Model model, @PathVariable int cheeseId) {
         model.addAttribute("cheese", CheeseData.getById(cheeseId));
+        model.addAttribute("cheeseTypes",CheeseType.values());
         model.addAttribute("title", "Edit Cheese");
         return "cheese/edit";
     }
