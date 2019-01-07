@@ -16,6 +16,8 @@ public class Cheese {
     @Size(min=1, message="Description must not be empty")
     private String description;
 
+    private CheeseType type;
+
     private static int nextId = 1;
     private final int cheeseId;
 
@@ -27,10 +29,12 @@ public class Cheese {
 
     }
 
-    public Cheese(String name, String description) {
+    public Cheese(String name, String description, CheeseType type) {
         this();
         this.name = name;
         this.description = description;
+        this.type = type;
+
     }
 
 
