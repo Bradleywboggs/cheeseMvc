@@ -5,15 +5,17 @@
     <nav th:replace="fragments :: navigation"></nav>
     <h1 th:text="${title}">Default Title</h1>
 
-    <form method="post">
+    <form method="post" th:object="${cheese}">
         <table>
            <tr>
                <td><label>Enter cheese name</label></td>
-               <td><input type="text" name="name" /><span th:if="${nameError}" th:text="${nameError}" class="error"></span></td>
+               <td><input type="text" th:field="*{name}" /></td>
+               <td><span class="error" th:errors="*{name}"></span></td>
            </tr>
            <tr>
                <td><label>Enter a description</label></td>
-               <td><input type="text" name="description"/></td>
+               <td><input type="text" th:field="*{description}"/></td>
+               <td><span th:errors="*{description}" class="error"></span></td>
            </tr>
            <tr>
                 <td><input type="submit" value="Add Cheese" /></td>
