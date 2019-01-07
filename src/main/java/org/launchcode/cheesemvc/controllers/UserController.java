@@ -1,6 +1,7 @@
 package org.launchcode.cheesemvc.controllers;
 
 import org.launchcode.cheesemvc.models.User;
+import org.launchcode.cheesemvc.models.UserData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("user")
 public class UserController {
 
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index(Model model){
+        model.addAttribute("users", UserData.getAll());
+        return "user/index";
+    }
+
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddForm(Model model) {
         model.addAttribute("title", "Sign Up");
@@ -21,6 +28,7 @@ public class UserController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddForm(Model model, @ModelAttribute User user, @RequestParam String verify) {
         if (verify.equals(user.getPassword())) {
+            UserData.add(user);
             model.addAttribute("user", user);
             model.addAttribute("title", "Welcome");
             return "user/index";

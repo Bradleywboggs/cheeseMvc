@@ -1,5 +1,6 @@
 package org.launchcode.cheesemvc.models;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class User {
@@ -14,9 +15,12 @@ public class User {
 
     private String email;
 
+    private final LocalDateTime timeStamp;
+
     public User() {
         userId = nextUserId;
         nextUserId++;
+        this.timeStamp = LocalDateTime.now();
     }
 
     public User(String username, String password) {
