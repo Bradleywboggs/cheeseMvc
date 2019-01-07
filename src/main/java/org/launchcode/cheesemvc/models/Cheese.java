@@ -1,6 +1,7 @@
 package org.launchcode.cheesemvc.models;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -8,6 +9,7 @@ public class Cheese {
 
     @NotNull
     @Size(min=3,  max=15, message="Name must be between 3 and 15 characters long")
+    @Pattern(regexp="^[ A-Za-z]+$", message="Entry must contain only letters and spaces.")
     private String name;
 
     @NotNull
