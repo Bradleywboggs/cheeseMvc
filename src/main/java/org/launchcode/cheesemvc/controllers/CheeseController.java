@@ -83,6 +83,7 @@ public class CheeseController {
          CheeseData.getById(cheeseId).setName(updatedCheese.getName());
          CheeseData.getById(cheeseId).setDescription(updatedCheese.getDescription());
          CheeseData.getById(cheeseId).setType(updatedCheese.getType());
+         CheeseData.getById(cheeseId).setRating(updatedCheese.getRating());
          return "redirect:/cheese";
 
     }
