@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import static org.launchcode.cheesemvc.Validations.isLettersSpaces;
-import static org.launchcode.cheesemvc.models.CheeseData.*;
 
 @Controller
 public class CheeseController {
