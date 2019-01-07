@@ -10,7 +10,7 @@
            <tr>
                <td><label th:for="name">Enter cheese name</label></td>
                <td><input th:field="*{name}" /></td>
-               <td><span class="error" th:errors="*{name}"></span></td>
+               <td><span th:errors="*{name}" class="error"></span></td>
            </tr>
            <tr>
                <td><label th:for="description">Enter a description</label></td>
