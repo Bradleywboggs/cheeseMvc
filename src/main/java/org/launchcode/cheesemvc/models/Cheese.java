@@ -59,6 +59,14 @@ public class Cheese {
         this.description = description;
     }
 
+    public CheeseType getType() {
+        return type;
+    }
+
+    public void setType(CheeseType type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

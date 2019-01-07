@@ -5,14 +5,14 @@ public enum CheeseType {
     SOFT ("Soft"),
     FAKE ("Fake");
 
-    private final String description;
+    private final String name;
 
-    CheeseType(String description) {
-        this.description = description;
+    CheeseType(String name) {
+        this.name = name;
     }
 
-    public String getDescription(){
-        return this.description;
+    public String getName(){
+        return this.name;
     }
 
 }
