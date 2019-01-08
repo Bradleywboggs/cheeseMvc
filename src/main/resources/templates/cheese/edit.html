@@ -11,12 +11,12 @@
         <tr>
             <td><label th:for="name">Cheese name</label></td>
             <td><input th:field="*{name}" th:value="*{name}"/></td>
-            <td><span class="error" th:errors="*{name}"></span></td>
+            <td><span th:text="${nameError}" class="error" ></span></td>
         </tr>
         <tr>
             <td><label th:for="description">Enter a description</label></td>
             <td><input th:field="*{description}" th:value="*{description}"/></td>
-            <td><span th:errors="*{description}" class="error"></span></td>
+            <td><span th:text="${descriptionError}" class="error"></span></td>
         </tr>
         <tr>
             <td><label th:for="Rating">Enter a Rating (1-5)</label></td>
