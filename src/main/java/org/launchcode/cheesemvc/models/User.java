@@ -1,5 +1,9 @@
 package org.launchcode.cheesemvc.models;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,10 +13,15 @@ public class User {
 
     private static int nextUserId = 1;
 
+    @NotNull
+    @Size(min=1, max=15, message="Username must be 3-15 characters in length")
     private String username;
 
+    @NotNull
+    @Size(min=1, max=15, message="Password must be 3-15 characters in length")
     private String password;
 
+    @Email (message="Not a valid email address")
     private String email;
 
     private final LocalDateTime timeStamp;
