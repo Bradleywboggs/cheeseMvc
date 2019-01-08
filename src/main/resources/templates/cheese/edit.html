@@ -19,6 +19,11 @@
             <td><span th:text="${descriptionError}" class="error"></span></td>
         </tr>
         <tr>
+            <td><label th:for="Rating">Enter a Rating (1-5)</label></td>
+            <td><input th:field="*{rating}" th:value="*{rating}"/></td>
+            <td><span th:errors="*{rating}" class="error"></span></td>
+        </tr>
+        <tr>
             <td><label th:for="type">Type</label></td>
             <td><select th:field="*{type}" th:value="*{type}">
                 <option th:each="cheeseType : ${cheeseTypes}"
@@ -37,7 +42,6 @@
 
     </table>
 </form>
-<p>Remember text inputs must not be empty!</p>
 
 </body>
 </html>
