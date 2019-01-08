@@ -7,24 +7,28 @@
 
   <h1 th:text="${title}">Default Title</h1>
 
-  <form method="post">
+  <form method="post" th:object="${user}">
     <table>
       <tr>
-          <td><label>Enter Username</label></td>
-          <td><input type="text" name="username" th:value="${username}" /></td>
+          <td><label th:for="username">Enter Username</label></td>
+          <td><input th:field="*{username}" th:value="*{username}" /></td>
+          <td><span th:errors="*{username}" class="errors"></span></td>
       </tr>
       <tr>
-          <td><label>Enter a password</label></td>
-          <td><input type="password" name="password"/></td>
+            <td><label th:for="password">Enter Password</label></td>
+            <td><input type="password" th:field="*{password}"/></td>
+            <td><span th:errors="*{password}" class="errors"></span></td>
       </tr>
-      <tr>
+      <tr>              
           <td><label>Verify your password</label></td>
-          <td><input type="password" name="verify"/></td><span th:text="${pwErrorMessage}">""</span>
+          <td><input type="password" name="verify"/></td>
+          <td><span th:text="${pwErrorMessage}" class="errors">""</span></td>
       </tr>
-      <tr>
-        <td><label>Enter your email(optional)</label></td>
-        <td><input type="email" name="email" th:value="${userEmail}"/></td>
-      </tr>
+        <tr>
+            <td><label th:for="email">Enter email (optional)</label></td>
+            <td><input type="email" th:field="*{email}" th:value="*{email}"/></td>
+            <td><span th:errors="*{email}" class="errors"></span></td>
+        </tr>
       <tr>
           <td><input type="submit" value="Sign Up" /></td>
       </tr>
