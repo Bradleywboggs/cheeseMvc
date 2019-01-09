@@ -1,4 +1,4 @@
-package org.launchcode.cheesemvc.models;
+package org.launchcode.cheesemvc.models.user;
 
 import java.util.ArrayList;
 
