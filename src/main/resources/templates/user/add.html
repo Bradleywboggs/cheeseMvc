@@ -16,13 +16,13 @@
       </tr>
       <tr>
             <td><label th:for="password">Enter Password</label></td>
-            <td><input type="password" th:field="*{password}"/></td>
+            <td><input type="password" th:field="*{password}" value=" "/></td>
             <td><span th:errors="*{password}" class="errors"></span></td>
       </tr>
       <tr>              
-          <td><label>Verify your password</label></td>
-          <td><input type="password" name="verify"/></td>
-          <td><span th:text="${pwErrorMessage}" class="errors">""</span></td>
+          <td><label th:for="verifyPassword">Verify your password</label></td>
+          <td><input type="password" th:field="*{verifyPassword}"/></td>
+          <td><span th:errors="*{verifyPassword}" class="errors">""</span></td>
       </tr>
         <tr>
             <td><label th:for="email">Enter email (optional)</label></td>
